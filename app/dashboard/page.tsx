@@ -1,18 +1,17 @@
-import {auth} from "@/auth";
-import { redirect } from "next/navigation";
+import { getRepositories } from "@/lib/github"; 
 
 export default async function Dashboard(){
-    const session=await auth();
-
-    if(!session) redirect("/");
+    const repos=await getRepositories();
 
     return(
         <div>
-            <h1> Dashboard</h1>
+            <h1>Your Repositories</h1>
 
-            <pre> 
-                {JSON.stringify(session,null,2)}
-            </pre>
+            <ul>
+                {repos.map((repo: {id:number;name:string}) =>(
+                    <li key={repo.id}>{repo.name}</li>
+                ))}
+            </ul>
         </div>
-    );
+    )
 }
