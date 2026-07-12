@@ -1,6 +1,7 @@
 import {auth} from "@/auth";
+import { GitHubRepository } from "@/types/github";
 
-export async function getRepositories() {
+export async function getRepositories() : Promise<GitHubRepository[]>{
     const session=await auth();
 
     if(!session?.accessToken) throw new Error("Not authenticated");
