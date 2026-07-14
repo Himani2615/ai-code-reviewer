@@ -15,19 +15,22 @@ type Props = {
   owner: string;
   repo: string;
   depth?: number;
+    onFileOpen: (path: string) => void;
 };
 
-export default function FileNode({item,owner,repo,depth = 0,}: Props) {
+export default function FileNode(props: Props) {
+  const { item, owner, repo, depth = 0,onFileOpen } = props;
 
   const [expanded, setExpanded] = useState(false);
   const [children, setChildren] = useState<GitHubRepositoryContent[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   const handleClick = async () => {
+
     if (item.type === "file") {
-      console.log("Open file:", item.path);
-      return;
-    }
+    onFileOpen(item.path);
+    return;
+  }
 
     if (expanded) {
       setExpanded(false);
@@ -93,6 +96,7 @@ export default function FileNode({item,owner,repo,depth = 0,}: Props) {
             owner={owner}
             repo={repo}
             depth={depth + 1}
+            onFileOpen={onFileOpen}
           />
         ))}
     </>

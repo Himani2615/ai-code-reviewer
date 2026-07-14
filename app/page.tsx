@@ -34,7 +34,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-32">
-    <div className="grid gap-8 md:grid-cols-3 relative z-10 bg-black pt-24 pb-32">
+    <div className="grid gap-8 md:grid-cols-3 relative z-10 bg-black pt-24 pb-8">
 
         <FeatureCard
             title="GitHub Login"

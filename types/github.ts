@@ -18,4 +18,4 @@ export interface GitHubRepositoryContent{
   type: "file" | "dir";
   size:number;
   sha:string;
-}
+};

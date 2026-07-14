@@ -7,10 +7,17 @@ type Props = {
   owner: string;
   repo: string;
   initialContents: GitHubRepositoryContent[];
+  onFileOpen: (path: string) => void;
 };
 
-export default function FileExplorer({owner,repo,initialContents,}: Props) {
-    
+export interface OpenedFile {
+    name: string;
+    path: string;
+    content: string;
+}
+
+export default function FileExplorer({owner,repo,initialContents,onFileOpen}: Props) {
+
   const sortedContents = [...initialContents].sort((a, b) => {
     if (a.type !== b.type) {
       return a.type === "dir" ? -1 : 1;
@@ -27,6 +34,7 @@ export default function FileExplorer({owner,repo,initialContents,}: Props) {
           item={item}
           owner={owner}
           repo={repo}
+          onFileOpen={onFileOpen}
         />
       ))}
     </div>

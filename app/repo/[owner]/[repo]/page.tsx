@@ -1,5 +1,5 @@
 import { getRepositoryContents } from "@/lib/github";
-import FileExplorer from "@/components/FileExplorer";
+import RepositoryWorkspace from "@/components/RepositoryWorkspace";
 
 export default async function RepositoryPage({ params}: {params: Promise<{ owner: string; repo: string }>}) {
 
@@ -13,11 +13,14 @@ export default async function RepositoryPage({ params}: {params: Promise<{ owner
         {repo}
       </h1>
 
-      <FileExplorer
+      <div className="grid  h-screen">
+
+      <RepositoryWorkspace
         owner={owner}
         repo={repo}
         initialContents={contents}
       />
+      </div>
     </div>
   );
 }
