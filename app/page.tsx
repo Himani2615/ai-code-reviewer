@@ -1,5 +1,5 @@
 import LoginButton from "@/components/LoginButton";
-import { Code, FolderGit2, Sparkles } from "lucide-react";
+import { FolderGit2, Sparkles } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import FeatureCard from "@/components/FeatureCard";
 import CodePreview from '@/components/CodePreview';
