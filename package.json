@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.13.0",
+    "@monaco-editor/react": "^4.7.0",
     "@prisma/client": "^7.8.0",
     "better-auth": "^1.6.23",
     "date-fns": "^4.4.0",

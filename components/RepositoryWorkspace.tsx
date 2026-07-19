@@ -3,6 +3,7 @@
 import { useState } from "react";
 import FileExplorer from "./FileExplorer";
 import { GitHubRepositoryContent } from "@/types/github";
+import CodeEditor from "@/components/CodeEditor"
 
 export interface OpenedFile {
   name: string;
@@ -34,6 +35,59 @@ export default function RepositoryWorkspace({owner,repo,initialContents,}: Props
     setOpenedFile(file);
   };
 
+  function getLanguage(extension:string):string{
+    switch(extension){
+        case "js":
+            return "javascript";
+
+        case "ts":
+            return "typescript";
+
+        case "tsx":
+            return "typescript";
+
+        case "py":
+            return "python";
+
+        case "java":
+            return "java";
+
+        case "cpp":
+            return "cpp";
+
+        case "css":
+            return "css";
+
+        case "html":
+            return "html";
+
+        case "jsx":
+    return "javascript";
+
+case "json":
+    return "json";
+
+case "md":
+    return "markdown";
+
+case "yml":
+case "yaml":
+    return "yaml";
+
+case "c":
+    return "c";
+
+case "go":
+    return "go";
+
+case "sql":
+    return "sql";
+
+        default:
+            return "plaintext";
+    }
+}
+
   return (
     <div className="grid h-[calc(100vh-120px)] md:grid-cols-[320px_1fr] gap-4">
       <div className="overflow-y-auto">
@@ -55,9 +109,13 @@ export default function RepositoryWorkspace({owner,repo,initialContents,}: Props
               </p>
             </div>
 
-            <pre className="whitespace-pre-wrap break-words text-sm">
+            {/* <pre className="whitespace-pre-wrap break-words text-sm">
               {openedFile.content}
-            </pre>
+            </pre> */}
+
+            <div className="h-full>">
+           {openedFile && ( <CodeEditor code={openedFile.content} language={getLanguage(openedFile.name.split(".").pop() ?? "")} />)}
+           </div> 
           </div>
         ) : (
           <div className="flex h-full items-center justify-center text-neutral-500 w-full">
