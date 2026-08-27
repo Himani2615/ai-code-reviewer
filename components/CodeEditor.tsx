@@ -10,7 +10,7 @@ type Props = {
 export default function CodeEditor({ code, language,}:Props){
 
     return(
-        <Editor height="80vh" theme="vs-dark" language={language} value={code} 
+        <Editor height="60vh" theme="vs-dark" language={language} value={code} 
             options={{
                 minimap:{
                     enabled:false,

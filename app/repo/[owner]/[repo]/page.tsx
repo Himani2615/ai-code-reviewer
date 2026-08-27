@@ -1,10 +1,11 @@
-import { getRepositoryContents } from "@/lib/github";
+import { getRepository, getRepositoryContents } from "@/lib/github";
 import RepositoryWorkspace from "@/components/RepositoryWorkspace";
 
 export default async function RepositoryPage({ params}: {params: Promise<{ owner: string; repo: string }>}) {
 
   const { owner, repo } = await params;
 
+  const repository = await getRepository(owner, repo);
   const contents = await getRepositoryContents(owner, repo);
 
   return (
@@ -18,6 +19,7 @@ export default async function RepositoryPage({ params}: {params: Promise<{ owner
       <RepositoryWorkspace
         owner={owner}
         repo={repo}
+        repositoryId={repository.id}
         initialContents={contents}
       />
       </div>

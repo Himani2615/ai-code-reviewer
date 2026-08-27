@@ -11,3 +11,15 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Review {
+  id             String   @id @default(cuid())
+  repositoryId   Int
+  repositoryName String
+  filePath       String
+  fileName       String
+  review         String
+  createdAt      DateTime @default(now())
+
+  @@index([repositoryId, filePath])
+}
